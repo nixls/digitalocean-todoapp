@@ -1,0 +1,25 @@
+{
+  "name": "digitalocean-todoapp",
+  "version": "1.0.0",
+  "description": "simple digitalocean todoapp with their database infrastructure",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nixls/digitalocean-todoapp.git"
+  },
+  "author": "nixls",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nixls/digitalocean-todoapp/issues"
+  },
+  "homepage": "https://github.com/nixls/digitalocean-todoapp#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "knex": "^0.21.15",
+    "pg": "^8.5.1"
+  }
+}
