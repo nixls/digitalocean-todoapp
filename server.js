@@ -9,6 +9,19 @@ const db = knex({
     connection: process.env.DATABASE_URL
 });
 
+db.schema.hasTable('task').then(hasTable => {
+    if (!hasTable) {
+        console.log("database doesn't have the task table, creating");
+        db.schema.createTable('task', (table) => {
+            table.increments('id').primary().notNullable();
+            table.string('task').unique();
+            table.integer('status').defaultTo(0);
+        }).then(_=> {
+            console.log("table created!");
+        }).catch(err => console.log(err));
+    }
+});
+
 // Express settings
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
