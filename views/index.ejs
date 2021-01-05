@@ -76,6 +76,14 @@
             window.location.reload();
           }).catch(err => console.log(err));
       }
+      $(document).ready(function() {
+        $("#done li").each(function() {
+          $(this).children("input").prop('checked', true);
+        })
+        $("#todo li").each(function() {
+          $(this).children("input").prop('checked', false);
+        })
+      });
     </script>
   </body>
 </html>
