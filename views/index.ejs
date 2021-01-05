@@ -47,7 +47,7 @@
             <% for(var i = 0; i < todos.length; i++){%>
               <% if(todos[i].status == 1){ %>
                 <li>
-                  <input type="checkbox" name="todo" value="<%= todos[i].id%>" onclick="moveTask(event, '<%= todos[i].id %>')" /> <%= todos[i].task%>
+                  <input type="checkbox" name="done" value="<%= todos[i].id%>" onclick="moveTask(event, '<%= todos[i].id %>')" /> <%= todos[i].task%>
                 </li>
               <%} %>
             <%} %>
