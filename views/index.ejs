@@ -27,11 +27,18 @@
           </div>
         </form>
       </div>
+      <div class="row tip">
+        <h4><ul>
+          <li>Double click an item to delete it</li>
+          <li>Check the checkbox to mark a task as done</li>
+          <li>Uncheck the checkbox to move it back to Todo items</li>
+        </ul></h4>
+      </div>
       <hr />
       <div class="row">
         <div class="col-md-6 col-sm-6">
           <h4>Todo Items</h4>
-          <ul id="todo">
+          <ul class="tasklist" id="todo">
             <% for(var i = 0; i < todos.length; i++) {%>
               <% if(todos[i].status == 0){ %>
                 <li>
@@ -44,7 +51,7 @@
         </div>
         <div class="col-md-6 col-sm-6">
           <h4>Done Items</h4>
-          <ul id="done">
+          <ul class="tasklist" id="done">
             <% for(var i = 0; i < todos.length; i++){%>
               <% if(todos[i].status == 1){ %>
                 <li>
