@@ -74,4 +74,13 @@ app.put("/moveTaskDone", (req, res) =>{
     }
 });
 
+app.delete("/deleteTask", (req, res) => {
+    const {id} = req.body;
+    db("task")
+        .where("id", '=', id)
+        .del()
+        .then(val => res.json(val))
+        .catch(err => res.status(400).json({message: `unable to delete task id ${id}`}));
+})
+
 app.listen(8080, () => console.log('app is running on port 8080'));

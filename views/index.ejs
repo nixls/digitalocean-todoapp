@@ -35,7 +35,8 @@
             <% for(var i = 0; i < todos.length; i++) {%>
               <% if(todos[i].status == 0){ %>
                 <li>
-                  <input type="checkbox" name="todo" value="<%= todos[i].id%>" onclick="moveTask(event, '<%= todos[i].id %>')"/> <%= todos[i].task%>
+                  <input type="checkbox" name="todo" value="<%= todos[i].id%>" onclick="moveTask(event, '<%= todos[i].id %>')"/>
+                  <span ondblclick="deleteTask(event, '<%= todos[i].id %>')"><%= todos[i].task%></span>
                 </li>
               <%} %>
             <%} %>
@@ -47,7 +48,8 @@
             <% for(var i = 0; i < todos.length; i++){%>
               <% if(todos[i].status == 1){ %>
                 <li>
-                  <input type="checkbox" name="done" value="<%= todos[i].id%>" onclick="moveTask(event, '<%= todos[i].id %>')" /> <%= todos[i].task%>
+                  <input type="checkbox" name="done" value="<%= todos[i].id%>" onclick="moveTask(event, '<%= todos[i].id %>')" />
+                  <span ondblclick="deleteTask(event, '<%= todos[i].id %>')"><%= todos[i].task%></span>
                 </li>
               <%} %>
             <%} %>
@@ -75,6 +77,21 @@
             console.log(status);
             window.location.reload();
           }).catch(err => console.log(err));
+      }
+      function deleteTask(event, id) {
+        console.log("dblclick fired!");
+        fetch("/deleteTask", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            id
+          })
+        }).then(response => response.json()).then(id => {
+          console.log(`${id} removed`);
+          window.location.reload();
+        }).catch(err => console.log(err));
       }
       $(document).ready(function() {
         $("#done li").each(function() {
