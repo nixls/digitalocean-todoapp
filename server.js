@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
     }).catch(err => res.status(400).json(err));
 });
 
-app.post("/addTodo", (req, res) => {
+app.post("/addTask", (req, res) => {
     const {textTodo} = req.body;
     db("task").insert({task: textTodo}).returning("*").then(_=> {
         res.redirect("/");
